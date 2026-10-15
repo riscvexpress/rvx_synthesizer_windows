@@ -13,4 +13,4 @@ rvx_config_python.mh
 rvx_setup.sh
 
 # local
-!_internal/base_library.zip
+!*synthesizer/_internal/base_library.zip
