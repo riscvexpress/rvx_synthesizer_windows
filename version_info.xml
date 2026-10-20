@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <version_info>
   <rvx_synthesizer_linux.url>git@github.com:riscvexpress/rvx_synthesizer_linux.git</rvx_synthesizer_linux.url>
-  <rvx_synthesizer_linux.commit>ae7e2a3</rvx_synthesizer_linux.commit>
-  <rvx_synthesizer_linux.date>2026-10-15-10-43</rvx_synthesizer_linux.date>
+  <rvx_synthesizer_linux.commit>8e1ad01</rvx_synthesizer_linux.commit>
+  <rvx_synthesizer_linux.date>2026-10-20-15-47</rvx_synthesizer_linux.date>
 </version_info>

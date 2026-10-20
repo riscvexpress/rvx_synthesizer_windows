@@ -2,8 +2,6 @@ LIBRARY_LIST = ./rvx_env.xml ./system_ip ./general_ip ./interface ./linker_templ
 PYTHON_SOURCE_LIST  = ./rvx_re_util.py ./rvx_util.py ./verilog_generator.py ./c_generator.py ./tcl_generator.py ./configure_template.py ./xml_util.py ./generate_copyright.py
 PYTHON_SOURCE_LIST += ./xml_converter.py ./generate_sw_env.py ./generate_rtl_sim_env.py ./generate_rtl_syn_env.py ./generate_rtl_sim_module.py ./generate_module.py ./synthesize_mmio.py ./synthesize_rom.py ./generate_ip_instance_info.py
 
--include ${RVX_RELEASE_HOME}/rvx_config_python.mh
-
 _convert_xml:
 	@${PYTHON3_CMD} xml_converter.py -xml ${INPUT_XML} -l ${LANGAUGE_TYPE} -o ${OUTPUT_DIR}
 

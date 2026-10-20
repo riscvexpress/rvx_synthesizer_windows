@@ -19,6 +19,7 @@
 ORIGINAL_FILE_LIST = ./git ./Makefile ./synthesizer_common.mh
 REMOVE_FILE_LIST = $(filter-out ${ORIGINAL_FILE_LIST}, $(wildcard ./*))
 
+include ../rvx_config_python.mh
 -include ./synthesizer_common.mh
 
 default:

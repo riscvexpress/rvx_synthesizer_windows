@@ -81,6 +81,21 @@
 		PROVIDE( _sp = . );
 	} >"${SINGLE_WRITE_MEMORY_REGION}"
 
+	.percore :
+	{
+		. = ALIGN("${DATA_ALIGN_SIZE}");
+		_percore_start_ = .;
+		*(.percore)
+		. = ALIGN("${DATA_ALIGN_SIZE}");
+		_percore_end_ = .;
+	} >"${SINGLE_WRITE_MEMORY_REGION}"
+
+	.percore_area :
+	{
+		_percore_area_start_ = .;
+		. += ((_percore_end_ - _percore_start_)*"${NUM_CORE_PHYSICAL}");
+	} >"${SINGLE_WRITE_MEMORY_REGION}"
+
   .bigdata_bss :
 	{
 		. = ALIGN("${DATA_ALIGN_SIZE}");
