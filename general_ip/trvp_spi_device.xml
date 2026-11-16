@@ -1,0 +1,147 @@
+<?xml version="1.0" ?>
+<rvx>
+  <dec_ip>
+    <name>trvp_spi_device</name>
+    <hdl_name>TRVP_SPI_DEVICE</hdl_name>
+    <def_parameter>
+      <name>BW_ADDR</name>
+      <value>32</value>
+    </def_parameter>
+    <def_parameter>
+      <name>BW_DATA</name>
+      <value>32</value>
+    </def_parameter>
+    <def_parameter>
+      <name>BW_TLUL_SIZE</name>
+      <value>2</value>
+    </def_parameter>
+    <def_parameter>
+      <name>BW_TLUL_SOURCE</name>
+      <value>8</value>
+    </def_parameter>
+    <def_parameter>
+      <name>BW_TLUL_SINK</name>
+      <value>1</value>
+    </def_parameter>
+
+    <signal>
+      <name>clk</name>
+      <width>1</width>
+      <port>input</port>
+      <comm_type>gclk_system_external</comm_type>
+    </signal>
+
+    <signal>
+      <name>rstnn</name>
+      <width>1</width>
+      <port>input</port>
+    </signal>
+
+    <reset_property>
+      <id>rstnn</id>
+      <type>asynch</type>
+      <type>negative</type>
+      <group>3</group>
+    </reset_property>
+
+    <signal>
+      <name>qspi_device_rclk</name>
+      <width>1</width>
+      <port>input</port>
+      <comm_type>external</comm_type>
+    </signal>
+
+    <signal>
+      <name>qspi_device_rcs</name>
+      <width>1</width>
+      <port>input</port>
+      <comm_type>external</comm_type>
+    </signal>
+
+    <tristate>
+      <name>qspi_device_dq</name>
+      <library_name>tristate_od</library_name>
+      <role>sender</role>
+      <comm_type>external</comm_type>
+      <parameter>
+        <id>bw_data</id>
+        <value>4</value>
+      </parameter>
+      <sync>None</sync>
+      <init>None</init>
+    </tristate>
+
+    <signal>
+      <name>intr_upload_cmdfifo_not_empty</name>
+      <width>1</width>
+      <port>output</port>
+      <user_available/>
+    </signal>
+
+    <signal>
+      <name>intr_upload_payload_not_empty</name>
+      <width>1</width>
+      <port>output</port>
+      <user_available/>
+    </signal>
+
+    <signal>
+      <name>intr_upload_payload_overflow</name>
+      <width>1</width>
+      <port>output</port>
+      <user_available/>
+    </signal>
+
+    <signal>
+      <name>intr_readbuf_watermark</name>
+      <width>1</width>
+      <port>output</port>
+      <user_available/>
+    </signal>
+
+    <signal>
+      <name>intr_readbuf_flip</name>
+      <width>1</width>
+      <port>output</port>
+      <user_available/>
+    </signal>
+
+    <core>
+      <sync>clk</sync>
+      <init>rstnn</init>
+    </core>
+
+    <interface>
+      <name>slave</name>
+      <library_name>tlot</library_name>
+      <hdl_prefix></hdl_prefix>
+      <role>receiver</role>
+      <comm_type>memory:all</comm_type>
+      <memorymap>
+        <size>0x2000</size>
+      </memorymap>
+      <parameter>
+        <id>bw_addr</id>
+        <value>BW_ADDR</value>
+      </parameter>
+      <parameter>
+        <id>bw_data</id>
+        <value>BW_DATA</value>
+      </parameter>
+      <parameter>
+        <id>bw_size</id>
+        <value>BW_TLUL_SIZE</value>
+      </parameter>
+      <parameter>
+        <id>bw_source</id>
+        <value>BW_TLUL_SOURCE</value>
+      </parameter>
+      <parameter>
+        <id>bw_sink</id>
+        <value>BW_TLUL_SINK</value>
+      </parameter>
+      <sync>clk</sync>
+      <init>rstnn</init>
+    </interface>
+  </dec_ip>
+</rvx>

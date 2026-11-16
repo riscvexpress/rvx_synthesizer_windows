@@ -37,7 +37,7 @@
     </signal>
     <signal>
       <name>inst_wdata</name>
-      <width>`BW_DCA_MATRIX_LSU_INST</width>
+      <width>BW_LSU_INST</width>
       <port>output</port>
     </signal>
     <signal>

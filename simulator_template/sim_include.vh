@@ -11,5 +11,6 @@
 `include "platform_info.vh"
 `include "sim_info.vh"
 `include "hex_size.vh"
+`include "flash_info.vh"
 
 `include "timescale.vh"

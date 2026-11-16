@@ -176,7 +176,7 @@
       </parameter>
       <parameter>
         <id>lsu_para</id>
-        <value>MAKE_LSU_READ_ONLY(LSU_PARA)</value>
+        <value>MAKE_LSU_SUPPORT_PAD(MAKE_LSU_READ_ONLY(LSU_PARA))</value>
       </parameter>
       <parameter>
         <id>bw_tensor_scalar</id>

@@ -231,22 +231,19 @@ genvar iter_spi;
 `ifdef INCLUDE_SPI_FLASH
 `ifdef SIMULATE_SPI_FLASH
 
-  wire spi_flash_sdq2;
-  wire spi_flash_sdq3;
-
-  pullup i_pullup_dq0 (i_platform.spi_flash_sdq0);
-  pullup i_pullup_dq1 (i_platform.spi_flash_sdq1);
-  pullup i_pullup_dq2 (spi_flash_sdq2);
-  pullup i_pullup_dq3 (spi_flash_sdq3);
+  pullup i_pullup_dq0 (i_platform.spi_flash_sdq[0]);
+  pullup i_pullup_dq1 (i_platform.spi_flash_sdq[1]);
+  pullup i_pullup_dq2 (i_platform.spi_flash_sdq[2]);
+  pullup i_pullup_dq3 (i_platform.spi_flash_sdq[3]);
 
 	N25Qxxx i_flash_model
 	(
-		.S(i_platform.spi_flash_scs), 
-		.C_(i_platform.spi_flash_sclk), 
-		.DQ0(i_platform.spi_flash_sdq0), 
-		.DQ1(i_platform.spi_flash_sdq1),
-		.Vpp_W_DQ2(spi_flash_sdq2),
-		.HOLD_DQ3(spi_flash_sdq3),
+		.S(i_platform.spi_flash_scs_list[0]),
+		.C_(i_platform.spi_flash_sclk),
+		.DQ0(i_platform.spi_flash_sdq[0]),
+		.DQ1(i_platform.spi_flash_sdq[1]),
+		.Vpp_W_DQ2(i_platform.spi_flash_sdq[2]),
+		.HOLD_DQ3(i_platform.spi_flash_sdq[3]),
 		.Vcc(32'h00000bb8) 
 	);
 

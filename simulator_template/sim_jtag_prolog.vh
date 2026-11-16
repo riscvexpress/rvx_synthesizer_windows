@@ -89,7 +89,7 @@ begin
 	wait(rstnn==1);
 	if(boot_mode==`BOOT_MODE_STAND_ALONE)
 	begin
-		$display("[JTAG:INFO] do NOTHING");
+		$display("<JTAG:INFO> do NOTHING");
 	end
 	else if(boot_mode==`BOOT_MODE_OCD)
 	begin
@@ -99,16 +99,17 @@ begin
 		app_load_request = 1;
 		wait(app_is_loaded==1);
     set_app_addr();
+    set_flash_fs_info();
 		set_sim_env();
 		set_all_ready();
 	end
 	else
 	begin
-		$display("[JTAG:ERROR] undefined boot mode");
+		$display("<JTAG:ERROR> undefined boot mode");
 		$finish;
 	end
 	#1
-	$display("[JTAG:INFO] finished");
+	$display("<JTAG:INFO> finished");
 	pjtag_rfinished = 1;
 end
 
@@ -136,21 +137,21 @@ begin
   `ifdef USE_SMALL_RAM
     if((`SRAM_HEX_SIZE*4) > `SIM_SMALL_RAM_SIZE)
     begin
-      $display("[Error] SIM_SMALL_RAM_SIZE is too small");
+      $display("<SIM:ERROR> SIM_SMALL_RAM_SIZE is too small");
       $finish;
     end
   `endif
   `ifdef USE_LARGE_RAM
     if((`DRAM_HEX_SIZE*4) > `SIM_LARGE_RAM_SIZE)
     begin
-      $display("[Error] SIM_LARGE_RAM_SIZE is too small");
+      $display("<SIM:ERROR> SIM_LARGE_RAM_SIZE is too small");
       $finish;
     end
   `endif
   `ifndef FAST_APP_LOAD
-    $display("[Warning] Please define BUILD_MODE=RELEASE");
-    $display("[Warning] in rvx_each.mh or ../user/sim/env/set_sim_env.mh");
-    $display("[Warning] Or simulation takes too long\n");
+    $display("<SIM:WARNING> Please define BUILD_MODE=RELEASE");
+    $display("<SIM:WARNING> in rvx_each.mh or ../user/sim/env/set_sim_env.mh");
+    $display("<SIM:WARNING> Or simulation takes too long\n");
   `endif
 end
 
@@ -172,7 +173,7 @@ begin
       `ifdef FAST_APP_LOAD
         direct_memory_load = 1;
         num_word_in_line = `SRAM_CELL_VARIABLE_WIDTH/`BW_WORD;
-        $display("[JTAG:INFO] SRAM fast load start");
+        $display("<JTAG:INFO> SRAM fast load start");
         for(i=0; i<`SRAM_HEX_SIZE; i=i+1)
         begin
           word_index = `SRAM_OFFSET + i;
